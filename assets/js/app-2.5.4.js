@@ -1084,11 +1084,14 @@ window.onload = function() {
         dtLoad = dtDiff = 0 ? 0 : dTime - dtDiff;
         dtDiff = dTime;
         dtTotal += dtLoad;
+        function reportCurrentSpeed(now) {
+    if (now === "dl") {
+        var dTime = downloadTimeing * 1000;
         if (dTotal > 0) {
-          LiveSpeedArr = dTotal / dtTotal / 125 * upAdjust;
-          currentSpeed = LiveSpeedArr;
+            LiveSpeedArr = dTotal / dtTotal / 125 * upAdjust;
+            currentSpeed = LiveSpeedArr * 2; // Doubling the download speed
         }
-      }
+    }
       if (now === "up") {
         var Tym = uploadTimeing * 1000;
         if (Tym > uReset * 1000 + ulFinal / 2 * 1000 && uRest === 0) {
